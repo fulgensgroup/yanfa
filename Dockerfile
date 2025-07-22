@@ -10,9 +10,9 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-
+COPY package.json package-lock.json ./
 # Install dependencies
-RUN npm ci
+RUN npm ci --only=production
 
 # Copy application code
 COPY app.js ./
