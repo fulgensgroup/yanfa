@@ -13,11 +13,11 @@ A powerful, asynchronous REST API for FFmpeg that accepts arbitrary commands and
 - **Docker ready** for easy deployment
 
 ## Endpoints
-POST /process - Start processing job
-GET /jobs/:jobId - Get job status
-GET /jobs/:jobId/download - Download completed output
-GET /jobs - List all jobs
-DELETE /jobs/:jobId - Delete/cancel job
+- POST /process - Start processing job
+- GET /jobs/:jobId - Get job status
+- GET /jobs/:jobId/download - Download completed output
+- GET /jobs - List all jobs
+- DELETE /jobs/:jobId - Delete/cancel job
 ### Using Docker Compose
 
 ```bash
