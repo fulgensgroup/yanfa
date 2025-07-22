@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  ffmpeg-api:
+    build: .
+    container_name: flexible-ffmpeg-api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MAX_FILE_SIZE=524288000  # 500MB
+      - TIMEOUT_MS=300000        # 5 minutes
+    volumes:
+      - /tmp/ffmpeg-api:/tmp     # Optional: for debugging
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 512M
